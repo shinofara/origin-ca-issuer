@@ -17,7 +17,7 @@ jobs:
           buildah manifest add origin-ca-issuer docker-archive:./docker-amd64
           buildah manifest add origin-ca-issuer docker-archive:./docker-arm64
           buildah manifest inspect origin-ca-issuer
-          buildah manifest push --all --creds ${DOCKER_HUB_USERNAME}:${DOCKER_HUB_TOKEN} -f v2s2 origin-ca-issuer docker://cloudflare/origin-ca-issuer:${GITHUB_REF#refs/tags/}
+          buildah manifest push --all --creds ${DOCKER_HUB_USERNAME}:${DOCKER_HUB_TOKEN} -f v2s2 origin-ca-issuer docker://${DOCKER_HUB_USERNAME}/origin-ca-issuer:${GITHUB_REF#refs/tags/}
           EOF
         env:
           DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
